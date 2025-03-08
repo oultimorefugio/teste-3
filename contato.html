@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - O Último Refúgio</title>
+    <style>
+        /* [Cole todo o CSS do index.html aqui] */
+
+        body {
+            background: url('https://i.imgur.com/PvEm9ps.png') fixed;
+        }
+
+        .formulario {
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--ouro);
+            color: white;
+        }
+
+        button {
+            background: var(--vermelho);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="ICONE_SERVIDOR.png" class="server-icon" alt="Ícone">
+        <a href="index.html" class="nav-link">🏠 Home</a>
+        <a href="regras.html" class="nav-link">📜 Regras</a>
+        <a href="doacoes.html" class="nav-link">💎 Doações</a>
+        <a href="contato.html" class="nav-link">📩 Contato</a>
+    </nav>
+
+    <div class="container">
+        <h1>FALE CONOSCO</h1>
+        
+        <div class="formulario">
+            <form id="contactForm">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+                <button type="submit">ENVIAR MENSAGEM</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Substituir pelo seu Webhook do Discord
+            const webhookURL = 'SEU_WEBHOOK_DISCORD';
+            
+            const formData = new FormData(this);
+            const message = {
+                content: `Nova mensagem de: ${formData.get('name')}\nEmail: ${formData.get('email')}\nMensagem: ${formData.get('message')}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(message)
+            })
+            .then(() => alert('Mensagem enviada com sucesso!'))
+            .catch(() => alert('Erro ao enviar mensagem'));
+        });
+    </script>
+</body>
+</html>
