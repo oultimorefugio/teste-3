@@ -5,18 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - O Último Refúgio</title>
     <style>
-        /* [Cole todo o CSS do index.html aqui] */
-
-        body {
-            background: url('https://i.imgur.com/PvEm9ps.png') fixed;
+        :root {
+            --ouro: #FFD700;
+            --vermelho: #8B0000;
+            --sombra: rgba(0,0,0,0.7);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: white;
+            background: url('https://i.imgur.com/PvEm9ps.png') fixed;
+            min-height: 100vh;
+        }
+
+        /* Menu Superior */
+        .navbar {
+            background: rgba(0,0,0,0.85);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: 1px solid var(--ouro);
+        }
+
+        .nav-link:hover {
+            background: var(--vermelho);
+            transform: scale(1.05);
+        }
+
+        /* Conteúdo Principal */
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--ouro);
+            text-shadow: 2px 2px 4px var(--sombra);
+            margin-bottom: 30px;
+        }
+
+        /* Formulário */
         .formulario {
             background: rgba(0,0,0,0.7);
             padding: 30px;
             margin: 20px auto;
             border-radius: 10px;
             max-width: 600px;
+            border: 2px solid var(--ouro);
         }
 
         input, textarea {
@@ -26,20 +83,48 @@
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--ouro);
             color: white;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
         }
 
         button {
-            background: var(--vermelho);
+            background: linear-gradient(45deg, var(--vermelho), #FF4500);
             color: white;
             padding: 12px 30px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 1em;
+            margin-top: 10px;
+            border: 1px solid var(--ouro);
         }
 
         button:hover {
-            background: #FF4500;
+            background: linear-gradient(45deg, #FF4500, var(--vermelho));
+            transform: translateY(-2px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                margin: 5px;
+                font-size: 0.9em;
+            }
+
+            .formulario {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -57,9 +142,9 @@
         
         <div class="formulario">
             <form id="contactForm">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+                <input type="text" name="name" placeholder="Seu nome" required>
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <textarea name="message" placeholder="Sua mensagem" required></textarea>
                 <button type="submit">ENVIAR MENSAGEM</button>
             </form>
         </div>
@@ -69,7 +154,7 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Substituir pelo seu Webhook do Discord
+            // Substitua pelo seu Webhook do Discord
             const webhookURL = 'SEU_WEBHOOK_DISCORD';
             
             const formData = new FormData(this);
