@@ -5,12 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regras - O Último Refúgio</title>
     <style>
-        /* [Cole todo o CSS do index.html aqui] */
-
-        body {
-            background: url('https://i.imgur.com/CZJpbAN.jpg') fixed;
+        :root {
+            --ouro: #FFD700;
+            --vermelho: #8B0000;
+            --sombra: rgba(0,0,0,0.7);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: white;
+            background: url('https://i.imgur.com/y4kA3PN.png') fixed;
+            min-height: 100vh;
+        }
+
+        /* Menu Superior */
+        .navbar {
+            background: rgba(0,0,0,0.85);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: 1px solid var(--ouro);
+        }
+
+        .nav-link:hover {
+            background: var(--vermelho);
+            transform: scale(1.05);
+        }
+
+        /* Conteúdo Principal */
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--ouro);
+            text-shadow: 2px 2px 4px var(--sombra);
+            margin-bottom: 30px;
+        }
+
+        /* Caixas de Regras */
         .regra-box {
             background: rgba(0,0,0,0.7);
             padding: 25px;
@@ -30,11 +86,28 @@
             line-height: 1.6;
             text-shadow: 1px 1px 2px var(--sombra);
         }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                margin: 5px;
+                font-size: 0.9em;
+            }
+
+            .regra-box {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <img src="ICONE_SERVIDOR.png" class="server-icon" alt="Ícone">
+        <img src="https://i.imgur.com/5tn6Dwl.png" class="server-icon" alt="Ícone">
         <a href="index.html" class="nav-link">🏠 Home</a>
         <a href="regras.html" class="nav-link">📜 Regras</a>
         <a href="doacoes.html" class="nav-link">💎 Doações</a>
@@ -46,23 +119,43 @@
         
         <div class="regra-box">
             <h2>📌 REGRAS GERAIS</h2>
-            <p>1. Respeite todos os jogadores<br>
-            2. Proibido qualquer forma de cheat<br>
-            3. Sem discurso de ódio ou discriminação</p>
+            <p>
+                1. Respeite todos os jogadores.<br>
+                2. Proibido qualquer forma de cheat ou exploração de bugs.<br>
+                3. Sem discurso de ódio, discriminação ou assédio.<br>
+                4. Proibido flood ou spam no chat.<br>
+                5. Siga as orientações da equipe de administração.
+            </p>
         </div>
 
         <div class="regra-box">
-            <h2>🏗️ CONSTRUÇÃO</h2>
-            <p>• Bases devem seguir distância regulamentar<br>
-            • Proibido bloquear estradas principais<br>
-            • Limite de 3 torres por base</p>
+            <h2>🏗️ CONSTRUÇÃO DE BASES</h2>
+            <p>
+                • Bases devem estar a pelo menos 500m de distância de outras.<br>
+                • Proibido bloquear estradas principais ou pontos estratégicos.<br>
+                • Limite de 3 torres por base.<br>
+                • Bases abandonadas por mais de 7 dias podem ser removidas.
+            </p>
         </div>
 
         <div class="regra-box">
             <h2>🔥 RAID</h2>
-            <p>• Permitido apenas nos finais de semana<br>
-            • Proibido destruir bases completamente<br>
-            • Respeite o período de imunidade</p>
+            <p>
+                • Raids são permitidas apenas nos finais de semana.<br>
+                • Proibido destruir completamente uma base (deixe pelo menos 1 parede).<br>
+                • Respeite o período de imunidade de novas bases (48 horas).<br>
+                • Raids devem ser justas (sem abuso de bugs ou exploits).
+            </p>
+        </div>
+
+        <div class="regra-box">
+            <h2>📦 REGRAS DE ARMAZENAMENTO</h2>
+            <p>
+                • Itens armazenados em barris ou tendas devem ser marcados no mapa.<br>
+                • Proibido esconder itens em locais inacessíveis (ex.: debaixo de mapas).<br>
+                • Limite de 5 barris por jogador.<br>
+                • Itens abandonados por mais de 14 dias podem ser removidos.
+            </p>
         </div>
     </div>
 </body>
